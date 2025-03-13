@@ -1,0 +1,29 @@
+---
+import { GET } from "../pages/api/users";
+let response = await GET(Astro);
+const result = await response.json();
+import { actions } from "astro:actions";
+const result2 = Astro.getActionResult(actions.createUser);
+console.log(result2);
+---
+<script>
+    import { actions } from "astro:actions";
+    const button = document.getElementById("button")!;
+    button.addEventListener("click", async () => {
+        const { data, error } = await actions.createUser({
+            name: "test 7",
+            age: 200,
+            email: "test7@example.com",
+        });
+        console.log(data, error);
+    });
+</script>   
+
+<div>
+    <h1 class="text-3xl font-bold">Test</h1>
+    <pre>{JSON.stringify(result, null, 2)}</pre>
+    <button id="button">Create User</button>
+</div>
+
+<style>
+</style>
