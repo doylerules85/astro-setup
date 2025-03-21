@@ -4,6 +4,7 @@ import { usersTable } from "../db/schema";
 import { z } from "zod";
 export const server = {
   createUser: defineAction({
+    accept: "form",
     input: z.object({
       name: z.string(),
       age: z.number(),

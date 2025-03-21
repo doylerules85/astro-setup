@@ -3,7 +3,7 @@ const Users = ({ users }: { users: any }) => {
     <div>
       <h1>Users</h1>
       {users.map((user: any) => (
-        <p>{user.name}</p>
+        <p key={user.email}>{user.name}</p>
       ))}
     </div>
   );
